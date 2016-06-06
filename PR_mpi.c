@@ -6,14 +6,19 @@
 int main(int argc, char **argv)
 {
  	MPI_Init(&argc, &argv);
+	if(argc<3)
+	{
+		printf("prawidlowe uzycie n subsize suma\n");
+		return 0;
+	}
 	int size,rank; 
  	MPI_Comm_size(MPI_COMM_WORLD, &size);
     	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	MPI_Status status;
 	srand(0);
-	int size_of_submatrix=2;
-	int size_of_matrix=6;
-	int searched_sum=28;
+	int size_of_submatrix=strtol(argv[2], NULL, 10);
+	int size_of_matrix=strtol(argv[1], NULL, 10);
+	int searched_sum=strtol(argv[3], NULL, 10);
 	int **array;
 	int **local;
 	int **master;
@@ -65,7 +70,7 @@ int main(int argc, char **argv)
 				case END:
 					//printf("odebralem end id: %d \n",rank);
 					finished++;
-					printf("KONIEC procesu : %d \n",status.MPI_SOURCE);
+					//printf("KONIEC procesu : %d \n",status.MPI_SOURCE);
 					break;
 				default:
 					break;

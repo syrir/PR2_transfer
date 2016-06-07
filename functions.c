@@ -94,7 +94,7 @@ void find_subs_seq(int** mat,int ssum,int size,int k)
 				}
 			}
 		}
-		printf("ilosc podmacierzy: %d\n",licznik);
+		//printf("ilosc podmacierzy: %d\n",licznik);
 
 }
 
